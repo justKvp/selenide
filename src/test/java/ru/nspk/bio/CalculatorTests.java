@@ -21,8 +21,11 @@ class CalculatorTests {
 
 	@Test
 	@DisplayName("1 + 1 = 2")
-	void addsTwoNumbers() {
+	void addsTwoNumbers() throws InterruptedException {
 		Calculator calculator = new Calculator();
+		System.out.println("Test started with Thread ID:" + Thread.currentThread().getId() + " with name" + Thread.currentThread().getName());
+		Thread.sleep(500);
+		System.out.println("Test ended with Thread ID:" + Thread.currentThread().getId() + " with name" + Thread.currentThread().getName());
 		assertEquals(2, calculator.add(1, 1), "1 + 1 should equal 2");
 	}
 
@@ -33,8 +36,11 @@ class CalculatorTests {
 			"49,  51, 100",
 			"1,  100, 101"
 	})
-	void add(int first, int second, int expectedResult) {
+	void add(int first, int second, int expectedResult) throws InterruptedException {
+		System.out.println("Test started with Thread ID:" + Thread.currentThread().getId() + " with name" + Thread.currentThread().getName());
+		Thread.sleep(500);
 		Calculator calculator = new Calculator();
+		System.out.println("Test ended with Thread ID:" + Thread.currentThread().getId() + " with name" + Thread.currentThread().getName());
 		assertEquals(expectedResult, calculator.add(first, second),
 				() -> first + " + " + second + " should equal " + expectedResult);
 	}
