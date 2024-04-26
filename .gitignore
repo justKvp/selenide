@@ -17,5 +17,8 @@ gradle-app.setting
 *.ipr
 *.iws
 
+# Allure
+.allure
+
 # Misc
 *.log

@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v20.html
  */
 
-package ru.nspk.bio;
+package ru.example;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
