@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("Второй suite")
 public class SecondTest {
+
     @Test
     @DisplayName("1 : Тест первый")
     @Description("Описание")
