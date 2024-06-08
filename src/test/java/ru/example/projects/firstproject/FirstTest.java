@@ -18,21 +18,25 @@ import org.junit.jupiter.api.Test;
 import ru.example.framework.playwright.BaseWebTest;
 
 import static ru.example.framework.allure.AllureUtil.logToAllure;
+import static ru.example.framework.constants.PlaywrightConstants.DEFAULT_VISIBLE_5S;
 
 @DisplayName("Первый suite")
 class FirstTest extends BaseWebTest {
 
-	@Test
-	@DisplayName("1 : Тест первый")
-	@Description("Описание")
-	void simpleTest(Page page) {
-		page.navigate("https://playwright.dev/");
-		//page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("example.png")));
-		logToAllure("just test step");
-		//makeScreenshot(page,"1");
+    @Test
+    @DisplayName("1 : Тест первый")
+    @Description("Описание")
+    void simpleTest(Page page) {
+        page.navigate("https://playwright.dev/");
+        //page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("example.png")));
+        logToAllure("just test step");
+        //makeScreenshot(page,"1");
 
-		page.locator("[class=getStarted_Sjon]").click();
-		page.waitForSelector("[class=\"hash-link\"]");
-		Assertions.assertTrue(page.getByLabel("Direct link to Introduction").isVisible());
-	}
+		page.waitForSelector("//a[@class='getStarted_Sjon']", DEFAULT_VISIBLE_5S);
+		page.locator("//a[@class='getStarted_Sjon']").click();
+        //page.locator("[class=getStarted_Sjon]").click();
+
+        page.waitForSelector("[class=\"hash-link\"]", DEFAULT_VISIBLE_5S);
+        Assertions.assertTrue(page.getByLabel("Direct link to Introduction").isVisible());
+    }
 }
