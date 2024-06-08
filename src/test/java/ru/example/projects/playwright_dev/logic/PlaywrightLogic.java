@@ -4,7 +4,7 @@ import com.microsoft.playwright.Page;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 
-import static ru.example.framework.constants.PlaywrightConstants.DEFAULT_VISIBLE_5S;
+import static ru.example.framework.playwright.PlaywrightConstants.DEFAULT_VISIBLE_5S;
 
 public class PlaywrightLogic {
     private final Page page;

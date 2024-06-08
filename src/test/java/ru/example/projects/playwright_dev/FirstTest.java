@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import ru.example.framework.playwright.BaseWebTest;
 import ru.example.projects.playwright_dev.logic.PlaywrightLogic;
 
-@DisplayName("playwright.dev: тесты")
+@DisplayName("Проект: playwright.dev")
 class FirstTest extends BaseWebTest {
 
     @Test

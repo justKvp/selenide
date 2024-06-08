@@ -1,4 +1,4 @@
-package ru.example.framework.constants;
+package ru.example.framework.playwright;
 
 import com.microsoft.playwright.Page;
 
