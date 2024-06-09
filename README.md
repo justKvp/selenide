@@ -10,7 +10,7 @@ Thus, to ensure that the correct version of Maven is used, invoke `mvnw` instead
 
 `./mvnw clean test`
 
-`./mvnw clean test -Dbrowser=webkit` (chromium, webkit, firefox - it's actuall for WebTests (extends BaseWebTest))
+`./mvnw clean test -Dbrowser=webkit -Dheadless=false` (chromium, webkit, firefox - it's actuall for WebTests (extends BaseWebTest))
 
 `./mvnw clean test -Dconfig=default` (or another config from test/resources/yaml/*.yaml)
 
