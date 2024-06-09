@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Assertions;
 
 import static ru.example.framework.playwright.PlaywrightConstants.DEFAULT_VISIBLE_5S;
 
-public class PlaywrightLogic {
+public class DemoPlaywrightLogic {
     private final Page page;
 
-    public PlaywrightLogic(Page page) {
+    public DemoPlaywrightLogic(Page page) {
         this.page = page;
     }
 

@@ -15,16 +15,16 @@ import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.example.framework.playwright.BaseWebTest;
-import ru.example.projects.playwright_dev.logic.PlaywrightLogic;
+import ru.example.projects.playwright_dev.logic.DemoPlaywrightLogic;
 
-@DisplayName("Проект: playwright.dev")
-class FirstTest extends BaseWebTest {
+@DisplayName("Проект: Demo playwright.dev")
+class DemoPlaywrightTest extends BaseWebTest {
 
     @Test
     @DisplayName("1 : Тест первый")
     @Description("Описание")
     void simpleTest(Page page) {
-        PlaywrightLogic logic = new PlaywrightLogic(page);
+        DemoPlaywrightLogic logic = new DemoPlaywrightLogic(page);
         logic.openPage("https://playwright.dev/");
         logic.clickButtonGetStarted();
         logic.checkNextPage();
