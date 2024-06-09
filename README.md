@@ -8,8 +8,28 @@ Thus, to ensure that the correct version of Maven is used, invoke `mvnw` instead
 
 ## Example
 
-./mvnw clean test
+`./mvnw clean test`
 
-./mvnw clean test -Dbrowser=webkit (chromium, webkit, firefox - it's actuall for WebTests (extends BaseWebTest))
+`./mvnw clean test -Dbrowser=webkit` (chromium, webkit, firefox - it's actuall for WebTests (extends BaseWebTest))
 
-./mvnw clean test -Dconfig=default (or another config from test/resources/yaml/*.yaml)
+`./mvnw clean test -Dconfig=default` (or another config from test/resources/yaml/*.yaml)
+
+### Contains:
+
+Junit5
+
+Playwright
+
+RestAssured
+
+Jackson : databind/xml/yaml/jsr310
+
+JSONObject
+
+Apache Commong Lang 3 : StringUtils
+
+Lombok
+
+slf4j
+
+Allure
