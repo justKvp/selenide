@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import static ru.example.framework.allure.AllureUtil.makeScreenshot;
 
 @UsePlaywright(PWOptions.class)
-@ExtendWith(TestResultExtension.class)
+@ExtendWith(WebTestResultExtension.class)
 public class BaseWebTest {
     private Page ptrPage;
 
