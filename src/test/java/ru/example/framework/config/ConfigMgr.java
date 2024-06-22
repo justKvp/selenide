@@ -48,7 +48,8 @@ public class ConfigMgr {
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
         desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
         Configuration.browserCapabilities = desiredCapabilities;
