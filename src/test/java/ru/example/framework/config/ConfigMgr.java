@@ -35,5 +35,8 @@ public class ConfigMgr {
         File file = new File(Objects.requireNonNull(classLoader.getResource(path)).getFile());
         ObjectMapper om = new ObjectMapper(new YAMLFactory());
         config = om.readValue(file, Config.class);
+
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+        System.setProperty("selenide.browser", "Chrome");
     }
 }
