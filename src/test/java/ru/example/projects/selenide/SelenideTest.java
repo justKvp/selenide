@@ -8,6 +8,7 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static ru.example.framework.allure.AllureUtil.getScreenshot;
 
 public class SelenideTest {
 
@@ -22,5 +23,6 @@ public class SelenideTest {
     public void selenide2() {
         open("https://ya.ru");
         $("[placeholder=\"Найдётся всё\"]").shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
+        getScreenshot("Страница");
     }
 }
