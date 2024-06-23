@@ -1,4 +1,21 @@
 ---
 # базовый URL
 baseUrl: "http://localhost"
-#browser: "yandex" #chromium/yandex
+
+# Настройка браузеров для прогона в докере (image qvipka/17jammy:latest)
+#browserChrome:
+#  browserBinary: "/usr/bin/google-chrome-stable"
+#  driverBinary: "/usr/bin/chromedriver"
+#
+#browserYandex:
+#  browserBinary: "/usr/bin/yandex-browser-stable"
+#  driverBinary: "/usr/bin/yandexdriver"
+
+# Настройка браузеров
+browserChrome:
+  browserBinary: "/usr/bin/google-chrome-stable"
+  driverBinary: "/usr/bin/chromedriver"
+
+browserYandex:
+  browserBinary: "/usr/bin/yandex-browser-stable"
+  driverBinary: "/usr/bin/yandexdriver"

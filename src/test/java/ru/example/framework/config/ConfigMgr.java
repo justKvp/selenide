@@ -19,6 +19,9 @@ public class ConfigMgr {
     @Getter
     public static String configName;
 
+    @Getter
+    public static String browserName;
+
     @SneakyThrows
     public static void initializeConfig() {
         /**
@@ -43,19 +46,31 @@ public class ConfigMgr {
     }
 
     private static void initSelenideConfig() {
+        browserName = "chrome";
+        if (!StringUtils.isEmpty(System.getProperty("browser"))) {
+            browserName = System.getProperty("browser");
+        }
+
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
 
-        switch (config.getBrowser()) {
-            case "chromium":
-                Configuration.browserBinary = "/usr/bin/chromium-browser";
-                System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+        String browserBinary = "";
+        String driverBinary = "";
+        switch (browserName) {
+            case "chrome":
+                browserBinary = config.getBrowserChrome().getBrowserBinary();
+                driverBinary = config.getBrowserChrome().getDriverBinary();
                 break;
             case "yandex":
-                Configuration.browserBinary = "/usr/bin/yandex-browser";
-                System.setProperty("webdriver.chrome.driver", "/usr/bin/yandexdriver");
+                browserBinary = config.getBrowserYandex().getBrowserBinary();
+                driverBinary = config.getBrowserYandex().getDriverBinary();
+                break;
+            default:
                 break;
         }
+
+        Configuration.browserBinary = browserBinary;
+        System.setProperty("webdriver.chrome.driver", driverBinary);
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
