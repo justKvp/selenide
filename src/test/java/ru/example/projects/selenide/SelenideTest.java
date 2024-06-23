@@ -22,7 +22,8 @@ public class SelenideTest {
     @Tag("selenide2")
     public void selenide2() {
         open("https://ya.ru");
-        $("[placeholder=\"Найдётся всё\"]").shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
         getScreenshot("Страница");
+        $("[placeholder=\"Найдётся всё\"]").shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
+
     }
 }

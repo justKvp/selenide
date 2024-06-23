@@ -39,8 +39,8 @@ public class ConfigMgr {
         ObjectMapper om = new ObjectMapper(new YAMLFactory());
         config = om.readValue(file, Config.class);
 
-        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-        Configuration.browserBinary = "/usr/bin/chromium-browser";
+        //System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+        //Configuration.browserBinary = "/usr/bin/chromium-browser";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         //Configuration.headless = true;
@@ -50,6 +50,7 @@ public class ConfigMgr {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
+        options.addArguments("--locale=ru-RU");
         desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
         Configuration.browserCapabilities = desiredCapabilities;
