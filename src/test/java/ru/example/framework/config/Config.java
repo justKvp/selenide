@@ -12,4 +12,6 @@ import javax.inject.Singleton;
 public class Config {
     @JsonProperty("baseUrl")
     private String baseUrl;
+    @JsonProperty("browser")
+    private String browser = "chromium";
 }

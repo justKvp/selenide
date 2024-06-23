@@ -1,4 +1,4 @@
 ---
 # базовый URL
 baseUrl: "http://localhost"
-#browser: "yandex" #chromium/yandex
+browser: "yandex" #chromium/yandex

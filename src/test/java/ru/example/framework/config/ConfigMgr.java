@@ -39,12 +39,23 @@ public class ConfigMgr {
         ObjectMapper om = new ObjectMapper(new YAMLFactory());
         config = om.readValue(file, Config.class);
 
-        //System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-        //Configuration.browserBinary = "/usr/bin/chromium-browser";
+        initSelenideConfig();
+    }
+
+    private static void initSelenideConfig() {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
-        //Configuration.headless = true;
 
+        switch (config.getBrowser()) {
+            case "chromium":
+                Configuration.browserBinary = "/usr/bin/chromium-browser";
+                System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+                break;
+            case "yandex":
+                Configuration.browserBinary = "/usr/bin/yandex-browser";
+                System.setProperty("webdriver.chrome.driver", "/usr/bin/yandexdriver");
+                break;
+        }
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
@@ -52,7 +63,6 @@ public class ConfigMgr {
         options.addArguments("--no-sandbox");
         options.addArguments("--locale=ru-RU");
         desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
-
         Configuration.browserCapabilities = desiredCapabilities;
     }
 }
