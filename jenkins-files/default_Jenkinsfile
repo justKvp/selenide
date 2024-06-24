@@ -4,6 +4,7 @@ pipeline {
 
     parameters {
         choice(name: 'browser', choices: ['chrome', 'yandex'], description: 'Выберите браузер для прогона')
+        string(name: 'email', defaultValue: '', description: 'Email address for receive report')
     }
 
     stages {
@@ -33,7 +34,7 @@ pipeline {
                 ])
 
                 /** Отправляем на почту **/
-                emailext to: "va_90@mail.ru",
+                emailext to: '$email',
                     subject: "RUN: junit5+selenide+docker",
                     body:'''
                         <b>Test browser:</b> ${browser}<br/>
