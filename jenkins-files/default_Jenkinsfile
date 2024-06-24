@@ -34,7 +34,7 @@ pipeline {
                 ])
 
                 /** Отправляем на почту **/
-                mail to: '$email',
+                emailext to: '$email',
                     subject: "RUN: junit5+selenide+docker",
                     body:'''
                         <b>Test browser:</b> ${browser}<br/>
