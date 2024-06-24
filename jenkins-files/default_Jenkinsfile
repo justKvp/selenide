@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: 'browser', choices: ['chrome', 'yandex'], description: 'Выберите браузер для прогона')
+    }
+
+    stages {
+        stage('Run Tests') {
+
+            steps('run docker image') {
+                // This step should not normally be used in your script. Consult the inline help for details.
+                withDockerContainer(image: 'qvipka/17jammy:latest') {
+                    sh './mvnw -Dbrowser=$browser clean test'
+                }
+            }
+
+        }
+    }
+
+    post {
+        always {
+            script {
+
+                /** Сначала в любом случае генерим аллюр-отчет **/
+                allure([
+                   includeProperties: false,
+                   jdk: '',
+                   properties: [],
+                   reportBuildPolicy: 'ALWAYS',
+                   results: [[path: 'selenide/target/allure-results']]
+                ])
+
+                /** Отправляем на почту **/
+                def list = 'va_90@mail.ru';
+                if(params.emailList != '') {
+                    list = params.emailList
+                }
+                emailext subject: '$DEFAULT_SUBJECT',
+                         body:'''
+                         <b>Test browser:</b> ${browser}<br/>
+                         <br/>
+                         <br/>
+                         <b>Report link:</b> http://185.185.59.232:8080/job/${JOB_NAME}/${BUILD_NUMBER}<br/>
+                         <br/>
+                         <b>Execution results:<br/>
+                         Total: ${TEST_COUNTS,var="total"}
+                         <span style="color:rgb(0,255,0);">&nbsp;&nbsp;&nbsp;Passed: ${TEST_COUNTS,var="pass"}</span>
+                         <span style="color:rgb(255,0,0);">&nbsp;&nbsp;&nbsp;Failed: ${TEST_COUNTS,var="fail"}</span></b>
+                            ''',
+                         to: "${list}",
+                         mimeType: 'text/html',
+                         attachmentsPattern: '*-report*'
+              }
+        }
+    }
+}
