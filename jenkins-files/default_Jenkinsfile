@@ -1,4 +1,8 @@
 pipeline {
+    options {
+          timeout(time: 1, unit: 'HOURS')
+    }
+
     agent any
 
     parameters {
@@ -10,7 +14,7 @@ pipeline {
 
             steps('run docker image') {
                 // This step should not normally be used in your script. Consult the inline help for details.
-                withDockerContainer(image: 'qvipka/17jammy:latest', args: '-e JAVA_OPTS=\"-Dorg.jenkinsci.plugins.docker.workflow.client.DockerClient.CLIENT_TIMEOUT=240\"') {
+                withDockerContainer(image: 'qvipka/17jammy:latest') {
                     sh './mvnw -Dmaven.repo.local=/tmp/mvn-repo -Dbrowser=$browser clean test'
                 }
             }
