@@ -29,7 +29,7 @@ pipeline {
                    jdk: '',
                    properties: [],
                    reportBuildPolicy: 'ALWAYS',
-                   results: [[path: 'selenide/target/allure-results']]
+                   results: [[path: 'target/allure-results']]
                 ])
 
                 /** Отправляем на почту **/
