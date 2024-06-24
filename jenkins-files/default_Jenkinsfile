@@ -33,25 +33,21 @@ pipeline {
                 ])
 
                 /** Отправляем на почту **/
-                def list = 'va_90@mail.ru';
-                if(params.emailList != '') {
-                    list = params.emailList
-                }
-                emailext subject: '$DEFAULT_SUBJECT',
-                         body:'''
-                         <b>Test browser:</b> ${browser}<br/>
-                         <br/>
-                         <br/>
-                         <b>Report link:</b> http://185.185.59.232:8080/job/${JOB_NAME}/${BUILD_NUMBER}<br/>
-                         <br/>
-                         <b>Execution results:<br/>
-                         Total: ${TEST_COUNTS,var="total"}
-                         <span style="color:rgb(0,255,0);">&nbsp;&nbsp;&nbsp;Passed: ${TEST_COUNTS,var="pass"}</span>
-                         <span style="color:rgb(255,0,0);">&nbsp;&nbsp;&nbsp;Failed: ${TEST_COUNTS,var="fail"}</span></b>
-                            ''',
-                         to: "${list}",
-                         mimeType: 'text/html',
-                         attachmentsPattern: '*-report*'
+                emailext to: "va_90@mail.ru",
+                    subject: "$DEFAULT_SUBJECT",
+                    body:'''
+                        <b>Test browser:</b> ${browser}<br/>
+                        <br/>
+                        <br/>
+                        <b>Report link:</b> http://185.185.59.232:8080/job/${JOB_NAME}/${BUILD_NUMBER}<br/>
+                        <br/>
+                        <b>Execution results:<br/>
+                        Total: ${TEST_COUNTS,var="total"}
+                        <span style="color:rgb(0,255,0);">&nbsp;&nbsp;&nbsp;Passed: ${TEST_COUNTS,var="pass"}</span>
+                        <span style="color:rgb(255,0,0);">&nbsp;&nbsp;&nbsp;Failed: ${TEST_COUNTS,var="fail"}</span></b>
+                        ''',
+                    mimeType: 'text/html',
+                    attachmentsPattern: '*-report*'
               }
         }
     }
