@@ -33,6 +33,9 @@ pipeline {
                    results: [[path: 'target/allure-results']]
                 ])
 
+                /** Затягиваем данные из результатов **/
+                junit 'target/surefire-reports/*.xml'
+
                 /** Отправляем на почту **/
                 emailext to: '$email',
                     subject: "RUN: junit5+selenide+docker",
