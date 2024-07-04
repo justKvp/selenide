@@ -75,6 +75,7 @@ public class ConfigMgr {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
+        options.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36");
         options.addArguments("--no-sandbox");
         options.addArguments("--locale=ru-RU");
         desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);

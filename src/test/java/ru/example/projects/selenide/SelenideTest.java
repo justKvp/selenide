@@ -7,8 +7,7 @@ import ru.example.framework.config.ConfigMgr;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static ru.example.framework.allure.AllureUtil.getScreenshot;
 import static ru.example.framework.allure.AllureUtil.logToAllure;
 
@@ -28,5 +27,14 @@ public class SelenideTest {
         logToAllure("Открыто в браузере " + ConfigMgr.browserName);
         getScreenshot("Страница");
         $("[placeholder=\"Найдётся всё\"]").shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
+    }
+
+    @Test
+    @Tag("selenide3")
+    public void selenide3() {
+        open("https://www.sberbank.ru/ru/person/persons");
+        logToAllure("Открыто в браузере " + ConfigMgr.browserName);
+        getScreenshot("Страница");
+        $x("//*[@class='dk-sbol-button__text dk-sbol-button__text_size_md' and text()='Уже хочу карту!']").shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
     }
 }
