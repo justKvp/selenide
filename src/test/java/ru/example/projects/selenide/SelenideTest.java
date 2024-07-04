@@ -25,8 +25,8 @@ public class SelenideTest {
     public void selenide2() {
         open("https://ya.ru");
         logToAllure("Открыто в браузере " + ConfigMgr.browserName);
-        getScreenshot("Страница");
         $("[placeholder=\"Найдётся всё\"]").shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
+        getScreenshot("Страница");
     }
 
     @Test
@@ -34,7 +34,7 @@ public class SelenideTest {
     public void selenide3() {
         open("https://www.sberbank.ru/ru/person/persons");
         logToAllure("Открыто в браузере " + ConfigMgr.browserName);
-        getScreenshot("Страница");
         $x("//*[@class='dk-sbol-button__text dk-sbol-button__text_size_md' and text()='Уже хочу карту!']").shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
+        getScreenshot("Страница");
     }
 }
